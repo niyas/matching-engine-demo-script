@@ -72,8 +72,8 @@ let Producer = kafka.Producer,
     client = new kafka.KafkaClient({kafkaHost: config.get("kafka.uri")})
     producer = new Producer(client),
     payloads = [
-        { topic: 'engine.orders.btc.usd', messages: buyOrders, partition: 0 },
-        { topic: 'engine.orders.btc.usd', messages: sellOrders, partition: 0 },
+        { topic: 'engine.orders.btc.usd', messages: buyOrders.map(order => JSON.stringify(order)), partition: 0 },
+        { topic: 'engine.orders.btc.usd', messages: sellOrders.map(order => JSON.stringify(order)), partition: 0 },
     ];
 
 producer.on('ready', function () {

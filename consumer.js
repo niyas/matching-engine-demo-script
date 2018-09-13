@@ -5,7 +5,7 @@ let client = new kafka.KafkaClient({kafkaHost: config.get("kafka.uri")});
 let consumer = new Consumer(
     client,
     [
-        { topic: 'engine.orders.btc.usd', partition: 0 }
+        { topic: 'engine.events.btc.usd', partition: 0 }
     ],
     {
         autoCommit: true,
